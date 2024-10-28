@@ -1,32 +1,71 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
-import { Pagination, Navigation } from "swiper/modules";
+import { Navigation, Autoplay } from "swiper/modules";
 
-// Contoh gambar slide dan teks
+// Data Hard Coded Slides
 const slides = [
   {
     id: 1,
-    type: "image", // Slide pertama hanya menampilkan gambar
     img: "https://firebasestorage.googleapis.com/v0/b/getgoing-prod.appspot.com/o/webImages%2F1689692183775IMG_1600.JPG?alt=media&token=0da0739c-fc65-4944-80d9-9e6b45d7af11",
     alt: "Slide 1",
+    title: "Apa yang GetGoing Punya?",
+    description: "Layanan yang tersedia untuk Anda",
+    features: [
+      {
+        title: "Trip Planner",
+        description: "Susun Rute Perjalananmu Sendiri",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 text-gray-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z" />
+          </svg>
+        ),
+      },
+      {
+        title: "Guide",
+        description: "Tour Guide berbahasa Indonesia",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 text-gray-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 12a4 4 0 110-8 4 4 0 010 8zm0 2c-3.326 0-6 2.48-6 5.5 0 .28.22.5.5.5h11a.5.5 0 00.5-.5c0-3.02-2.674-5.5-6-5.5z" />
+          </svg>
+        ),
+      },
+      {
+        title: "Info",
+        description: "Info penting di luar negeri",
+        icon: (
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="w-8 h-8 text-gray-500"
+            fill="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path d="M21 10.998h-6.586l2.293-2.293-1.414-1.414L12 12.172l-3.293-3.293-1.414 1.414 2.293 2.293H3v2h6.586l-2.293 2.293 1.414 1.414L12 13.828l3.293 3.293 1.414-1.414-2.293-2.293H21v-2z" />
+          </svg>
+        ),
+      },
+    ],
   },
   {
     id: 2,
-    type: "custom", // Slide kedua menampilkan teks dan logo App Store & Play Store
+    img: "https://firebasestorage.googleapis.com/v0/b/getgoing-prod.appspot.com/o/webImages%2F1689692364277swiss%202%20(1)-min.JPG?alt=media&token=e4b0843f-875b-4bbe-b8bc-642318848bca",
+    alt: "Slide 2",
     title: "Aplikasi GetGoing",
-    subtitle: "Eksplor dan nikmati mudah liburan ke luar negeri dengan",
+    description: "Eksplor dan nikmati mudah liburan ke luar negeri dengan",
     appLinks: {
-      appStore: "https://link_to_appstore.com", // Ganti dengan link yang sebenarnya
-      playStore: "https://link_to_playstore.com", // Ganti dengan link yang sebenarnya
+      appStore: "https://link_to_appstore.com",
+      playStore: "https://link_to_playstore.com",
     },
-  },
-  {
-    id: 3,
-    type: "image",
-    img: "https://via.placeholder.com/800x400?text=Slide+3",
-    alt: "Slide 3",
   },
 ];
 
@@ -35,62 +74,91 @@ export default function Banner() {
     <div className="container mx-auto py-8">
       <Swiper
         spaceBetween={30}
-        pagination={{
-          clickable: true,
+        loop={true}
+        autoplay={{
+          delay: 3000,
+          disableOnInteraction: false,
         }}
         navigation={true}
-        modules={[Pagination, Navigation]}
+        modules={[Navigation, Autoplay]}
         className="mySwiper"
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            {slide.type === "image" ? (
-              <div className="w-full h-96 flex justify-center items-center">
+            <div className="flex justify-between items-center h-96 px-6">
+              <div className="w-1/2 pr-6 flex justify-center">
                 <img
                   src={slide.img}
                   alt={slide.alt}
-                  className="w-full h-full object-cover rounded-lg"
+                  className="w-11/12 h-96 object-cover rounded-3xl shadow-lg"
                 />
               </div>
-            ) : (
-              <div className="flex justify-between items-center h-96 px-6">
-                {/* Bagian kiri: Teks custom */}
-                <div className="w-1/2">
-                  <h3 className="text-gray-500 text-sm uppercase tracking-wide mb-4">
-                    {slide.subtitle}
-                  </h3>
-                  <h2 className="text-3xl font-bold mb-4">{slide.title}</h2>
-                  <p className="text-gray-600 mb-8">Dapat didownload di:</p>
-                  <div className="flex space-x-4">
-                    {/* Logo App Store */}
-                    <a href={slide.appLinks.appStore} target="_blank" rel="noopener noreferrer">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/6/67/App_Store_badge.svg"
-                        alt="Download on App Store"
-                        className="h-12"
-                      />
-                    </a>
-                    {/* Logo Play Store */}
-                    <a href={slide.appLinks.playStore} target="_blank" rel="noopener noreferrer">
-                      <img
-                        src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
-                        alt="Get it on Google Play"
-                        className="h-12"
-                      />
-                    </a>
-                  </div>
-                </div>
-
-                {/* Bagian kanan: Panah navigasi */}
-                <div className="w-1/2 flex justify-center">
-                  <img
-                    src="https://firebasestorage.googleapis.com/v0/b/getgoing-prod.appspot.com/o/webImages%2F1689692183775IMG_1600.JPG?alt=media&token=0da0739c-fc65-4944-80d9-9e6b45d7af11"
-                    alt="Image for Slide"
-                    className="w-full h-full object-cover rounded-lg"
-                  />
-                </div>
+              <div className="w-1/2 pl-6 text-center">
+                {slide.id === 1 ? (
+                  <>
+                    <h2 className="text-gray-400 text-[16px] text-sm uppercase tracking-[.3em] mb-4">
+                      {slide.title}
+                    </h2>
+                    <div className="space-y-6">
+                      {slide.features.map((feature, index) => (
+                        <div
+                          key={index}
+                          className="flex items-center space-x-4 text-center p-4 rounded-lg hover:scale-105 transform transition-transform duration-300"
+                        >
+                          <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full">
+                            {feature.icon}
+                          </div>
+                          <div className="text-left">
+                            <h3 className="font-semibold text-gray-800 text-[20px] text-lg mb-1">
+                              {feature.title}
+                            </h3>
+                            <p className="text-[#212529] font-bold text-[12px] leading-[12px] bg-gray-100 px-3 py-1 rounded-full">
+                              {feature.description}
+                            </p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <h3 className="text-[16px] font-light text-[#868e96] tracking-[.3em] mb-2 uppercase">
+                      {slide.description}
+                    </h3>
+                    <h2 className="text-4xl font-semibold text-gray-800 mb-6">
+                      {slide.title}
+                    </h2>
+                    <p className="text-[16px] font-light text-[#868e96] tracking-[.3em] mb-8 uppercase">
+                      Dapat didownload di:
+                    </p>
+                    <div className="flex justify-center space-x-4">
+                      <a
+                        href={slide.appLinks.appStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                          alt="Download on App Store"
+                          className="h-12"
+                        />
+                      </a>
+                      <a
+                        href={slide.appLinks.playStore}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <img
+                          src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                          alt="Get it on Google Play"
+                          className="h-12"
+                        />
+                      </a>
+                    </div>
+                  </>
+                )}
               </div>
-            )}
+            </div>
           </SwiperSlide>
         ))}
       </Swiper>
