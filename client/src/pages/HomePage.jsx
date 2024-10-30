@@ -6,6 +6,7 @@ import { Pagination } from "swiper/modules";
 import Carousel from "../components/Carousel";
 import QuoteDisplay from "../components/QuoteDisplay";
 import FeatureSection from "../components/FeatureSection";
+import PopularCities from "../components/PopularCities";
 
 export default function Homepage() {
   const cardData = [
@@ -118,6 +119,11 @@ export default function Homepage() {
       {/* Feature Section Component */}
       <div className="mt-12">
         <FeatureSection />
+      </div>
+
+      {/* Popular Cities Component */}
+      <div className="mt-12">
+        <PopularCities />
       </div>
 
       {/* Custom Pagination Styles */}
