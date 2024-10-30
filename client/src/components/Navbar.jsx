@@ -33,19 +33,16 @@ export default function Navbar() {
       } transition-all duration-500 ease-in-out`}
     >
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-        {/* Logo */}
         <div className="logo text-2xl font-bold">GetGoing</div>
-
-        {/* Search Bar - Updated Design */}
         <form className="hidden md:flex items-center bg-white rounded-full shadow-[0px_0px_20px_rgba(255,0,0,0.5)] overflow-hidden ml-10">
           <input
             type="text"
             placeholder="Cari negara, kota atau guide"
-            className="px-6 py-3 w-[400px] outline-none text-gray-500 bg-white pr-10" // Added pr-10 for extra padding-right
+            className="px-6 py-3 w-[400px] outline-none text-gray-500 bg-white pr-10"
           />
           <button
             type="submit"
-            className="bg-red-500 p-3 flex items-center justify-center text-white rounded-full -ml-4" // Adjusted margin-left for more spacing
+            className="bg-red-500 p-3 flex items-center justify-center text-white rounded-full -ml-4"
           >
             <svg
               className="w-4 h-4"
@@ -63,8 +60,6 @@ export default function Navbar() {
             </svg>
           </button>
         </form>
-
-        {/* Desktop Menu */}
         <ul className="hidden md:flex space-x-4 ml-auto font-medium">
           <li>
             <a
@@ -105,16 +100,14 @@ export default function Navbar() {
               href="/login"
               className={`${
                 isActiveLink("/login")
-                  ? "font-bold text-black"
+                  ? "font-bold text-black tracking-[.2em] text-[13px]"
                   : "text-black"
-              } hover:text-gray-800 transition`}
+              } hover:text-gray-800 transition tracking-[.2em] text-[13px] font-bold`}
             >
               LOGIN
             </a>
           </li>
         </ul>
-
-        {/* Hamburger Icon - visible only on smaller screens */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden focus:outline-none text-gray-700"
@@ -134,8 +127,6 @@ export default function Navbar() {
             ></path>
           </svg>
         </button>
-
-        {/* Mobile Menu */}
         {isMenuOpen && (
           <div className="absolute top-16 left-0 right-0 bg-white shadow-lg rounded-lg p-4 md:hidden">
             <ul className="flex flex-col space-y-4">
@@ -143,7 +134,9 @@ export default function Navbar() {
                 <a
                   href="/"
                   className={`${
-                    isActiveLink("/") ? "font-bold text-red-500" : "text-red-500"
+                    isActiveLink("/")
+                      ? "font-bold text-red-500"
+                      : "text-red-500"
                   } hover:text-red-700 transition`}
                 >
                   Beranda

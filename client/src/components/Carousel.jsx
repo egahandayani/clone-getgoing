@@ -3,7 +3,12 @@ import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation, Autoplay } from "swiper/modules";
 
-// Data Hard Coded Slides
+const AUTOPLAY_SETTINGS = {
+  delay: 3000,
+  disableOnInteraction: false,
+};
+
+// Data hardcoded slides
 const slides = [
   {
     id: 1,
@@ -63,23 +68,38 @@ const slides = [
     title: "Aplikasi GetGoing",
     description: "Eksplor dan nikmati mudah liburan ke luar negeri dengan",
     appLinks: {
-      appStore: "https://link_to_appstore.com",
-      playStore: "https://link_to_playstore.com",
+      appStore: "https://apps.apple.com/us/app/getgoing/id1602015694",
+      playStore:
+        "https://play.google.com/store/apps/details?id=com.getgoing.app",
     },
   },
 ];
 
-export default function Banner() {
+// Component for Feature Item
+const FeatureItem = ({ icon, title, description }) => (
+  <div className="flex items-center space-x-4 text-center p-4 rounded-lg hover:scale-105 transform transition-transform duration-300">
+    <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full">
+      {icon}
+    </div>
+    <div className="text-left">
+      <h3 className="font-semibold text-gray-800 text-[20px] text-lg mb-1">
+        {title}
+      </h3>
+      <p className="text-[#212529] font-bold text-[12px] leading-[12px] bg-gray-100 px-3 py-1 rounded-full">
+        {description}
+      </p>
+    </div>
+  </div>
+);
+
+export default function Carousel() {
   return (
     <div className="container mx-auto py-8">
       <Swiper
         spaceBetween={30}
-        loop={true}
-        autoplay={{
-          delay: 3000,
-          disableOnInteraction: false,
-        }}
-        navigation={true}
+        loop
+        autoplay={AUTOPLAY_SETTINGS}
+        navigation
         modules={[Navigation, Autoplay]}
         className="mySwiper"
       >
@@ -101,22 +121,12 @@ export default function Banner() {
                     </h2>
                     <div className="space-y-6">
                       {slide.features.map((feature, index) => (
-                        <div
+                        <FeatureItem
                           key={index}
-                          className="flex items-center space-x-4 text-center p-4 rounded-lg hover:scale-105 transform transition-transform duration-300"
-                        >
-                          <div className="w-12 h-12 flex items-center justify-center bg-gray-100 rounded-full">
-                            {feature.icon}
-                          </div>
-                          <div className="text-left">
-                            <h3 className="font-semibold text-gray-800 text-[20px] text-lg mb-1">
-                              {feature.title}
-                            </h3>
-                            <p className="text-[#212529] font-bold text-[12px] leading-[12px] bg-gray-100 px-3 py-1 rounded-full">
-                              {feature.description}
-                            </p>
-                          </div>
-                        </div>
+                          icon={feature.icon}
+                          title={feature.title}
+                          description={feature.description}
+                        />
                       ))}
                     </div>
                   </>
