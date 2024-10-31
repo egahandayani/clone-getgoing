@@ -9,6 +9,7 @@ import FeatureSection from "../components/FeatureSection";
 import PopularCities from "../components/PopularCities";
 import TestimonialContent from "../components/TestimonialContent";
 import TestimonialCarousel from "../components/TestimonialCaraousel";
+import ArticleList from "../components/ArticleList";
 
 export default function Homepage() {
   const cardData = [
@@ -131,6 +132,11 @@ export default function Homepage() {
       {/* Testimonial Component */}
       <div className="mt-12">
         <TestimonialCarousel />
+      </div>
+
+      {/* Article List Component */}
+      <div className="mt-12">
+        <ArticleList />
       </div>
 
       {/* Custom Pagination Styles */}
