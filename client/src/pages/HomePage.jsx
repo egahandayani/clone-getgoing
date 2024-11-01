@@ -7,7 +7,6 @@ import Carousel from "../components/Carousel";
 import QuoteDisplay from "../components/QuoteDisplay";
 import FeatureSection from "../components/FeatureSection";
 import PopularCities from "../components/PopularCities";
-import TestimonialContent from "../components/TestimonialContent";
 import TestimonialCarousel from "../components/TestimonialCaraousel";
 import ArticleList from "../components/ArticleList";
 

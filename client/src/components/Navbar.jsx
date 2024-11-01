@@ -33,12 +33,15 @@ export default function Navbar() {
       } transition-all duration-500 ease-in-out`}
     >
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
-        <div className="logo text-2xl font-bold">GetGoing</div>
+        <img
+          src="https://getgoing.co.id/_next/static/images/LogoGetGoing-1b06f75eefdc319bb98ba925a24ee023.png"
+          alt="GetGoing"
+        />
         <form className="hidden md:flex items-center bg-white rounded-full shadow-[0px_0px_20px_rgba(255,0,0,0.5)] overflow-hidden ml-10">
           <input
             type="text"
             placeholder="Cari negara, kota atau guide"
-            className="px-6 py-3 w-[400px] outline-none text-gray-500 bg-white pr-10"
+            className="px-6 py-3 w-[400px] outline-none text-gray-800 bg-white pr-10"
           />
           <button
             type="submit"
