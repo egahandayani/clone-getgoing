@@ -8,7 +8,7 @@ import QuoteDisplay from "../components/QuoteDisplay";
 import FeatureSection from "../components/FeatureSection";
 import PopularCities from "../components/PopularCities";
 import TestimonialCarousel from "../components/TestimonialCaraousel";
-import ArticleList from "../components/ArticleList";
+import ArticleCard from "../components/ArticleCard";
 
 export default function Homepage() {
   const cardData = [
@@ -135,7 +135,7 @@ export default function Homepage() {
 
       {/* Article List Component */}
       <div className="mt-12">
-        <ArticleList />
+        <ArticleCard/>
       </div>
 
       {/* Custom Pagination Styles */}
