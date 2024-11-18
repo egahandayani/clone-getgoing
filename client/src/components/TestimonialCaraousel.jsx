@@ -1,5 +1,4 @@
 import { useState } from "react";
-import TestimonialContent from "./TestimonialContent";
 
 const testimonials = [
   {
@@ -47,8 +46,17 @@ export default function TestimonialCarousel() {
       <div className="flex items-start w-full justify-between space-x-12">
         {/* Testimonial Content */}
         <div className="flex-1 max-w-4xl">
-          <TestimonialContent testimonial={testimonials[currentIndex]} />
+          <div className="relative pr-12 max-w-[600px]">
+            <h2 className="text-[24px] font-bold text-[rgb(33,37,41)] mb-2">
+              {testimonials[currentIndex].heading}
+            </h2>
+            <p className="text-[14px] font-medium text-[rgb(135,145,169)] leading-relaxed">
+              {testimonials[currentIndex].content}
+            </p>
+          </div>
         </div>
+
+        {/* Testimonial Image */}
         <div className="relative w-[300px]">
           <img
             src={
