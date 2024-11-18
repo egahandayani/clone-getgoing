@@ -26,10 +26,8 @@ export default function Navbar() {
 
   return (
     <header
-      className={`w-full ${
-        isSticky
-          ? "fixed top-4 left-0 right-0 mx-auto max-w-7xl rounded-full backdrop-blur-md bg-white/20 shadow-2xl z-50"
-          : "relative bg-white shadow-none"
+      className={`w-full fixed top-0 left-0 z-50 ${
+        isSticky ? "bg-white/30 backdrop-blur-lg shadow-md" : "bg-transparent"
       } transition-all duration-500 ease-in-out`}
     >
       <nav className="container mx-auto flex justify-between items-center py-4 px-6">
@@ -111,6 +109,7 @@ export default function Navbar() {
             </a>
           </li>
         </ul>
+        {/* Mobile menu toggle */}
         <button
           onClick={() => setIsMenuOpen(!isMenuOpen)}
           className="md:hidden focus:outline-none text-gray-700"
@@ -130,9 +129,37 @@ export default function Navbar() {
             ></path>
           </svg>
         </button>
+        {/* Dropdown menu on mobile*/}
         {isMenuOpen && (
-          <div className="absolute top-16 left-0 right-0 bg-white shadow-lg rounded-lg p-4 md:hidden">
-            <ul className="flex flex-col space-y-4">
+          <div className="absolute top-full left-0 w-full bg-white/50 backdrop-blur-3xl shadow-lg rounded-lg p-4">
+            <div className="absolute inset-0 bg-white/60 rounded-lg pointer-events-none"></div>
+            <form className="relative flex items-center bg-white rounded-full shadow-[0px_0px_20px_rgba(255,0,0,0.5)] overflow-hidden mb-4 p-2 z-10">
+              <input
+                type="text"
+                placeholder="Cari negara, kota atau guide"
+                className="px-4 py-2 w-full outline-none text-gray-800 bg-white"
+              />
+              <button
+                type="submit"
+                className="bg-red-500 p-2 flex items-center justify-center text-white rounded-full"
+              >
+                <svg
+                  className="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M14 5l7 7m0 0l-7 7m7-7H3"
+                  ></path>
+                </svg>
+              </button>
+            </form>
+            <ul className="relative flex flex-col space-y-4 z-10">
               <li>
                 <a
                   href="/"
